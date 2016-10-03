@@ -19,6 +19,9 @@ import javax.swing.Timer;
  */
 public class DeathRecursion extends JPanel {
     
+    public static final int GAME_WIDTH = 288;
+    public static final int GAME_HEIGHT = 224;
+    
     private Timer timer;
     
     // used for rescaling
@@ -33,13 +36,14 @@ public class DeathRecursion extends JPanel {
     private Sprite[][] boringBorder;
     private Entity player;
     private Sprite otherBoringSprite;
+    private Sprite boringBricks;
     
     public DeathRecursion() {
         super();
         
         this.setSize(900, 700);
         
-        sbi = new BufferedImage(288, 224, BufferedImage.TYPE_INT_ARGB);
+        sbi = new BufferedImage(GAME_WIDTH, GAME_HEIGHT, BufferedImage.TYPE_INT_ARGB);
         
         // setup game variables
         reset();
@@ -55,6 +59,7 @@ public class DeathRecursion extends JPanel {
             }
         }
         
+        boringBricks = new Sprite("bricks", 16 + 32 * 3, 16 + 32 * 3);
         
         otherBoringSprite = new Sprite(new String[] {"torch_1", "torch_2", "torch_3", "torch_4",
             "torch_1", "torch_2", "torch_3", "torch_4",
@@ -132,6 +137,7 @@ public class DeathRecursion extends JPanel {
             }
         }
         
+        boringBricks.paint(preg);
         otherBoringSprite.paint(preg);
         
         // Player shuold be one of the last things to paint

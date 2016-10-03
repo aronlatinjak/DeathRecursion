@@ -13,7 +13,7 @@ import javax.swing.JFrame;
  *
  * @author D
  */
-public class DeathRecursionWindow extends JFrame implements KeyListener{
+public class DeathRecursionWindow extends JFrame implements KeyListener {
 
     static DeathRecursion drg;
     static DeathRecursionWindow dr;

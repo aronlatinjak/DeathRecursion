@@ -13,9 +13,9 @@ import java.awt.Graphics;
  */
 public class Entity extends Sprite {
     
-    private static final double MAX_VELOCITY = 10;
+    private static final double MAX_VELOCITY = 2.5;
     
-    private static final double ACCELERATION_RATE = 0.5;
+    private static final double ACCELERATION_RATE = 1.01;
     private static final double DIAGONAL_ACCELERATION = Math.sqrt(ACCELERATION_RATE/4);
     
     private static final int ANIMATION_FPS= 7;
@@ -133,6 +133,29 @@ public class Entity extends Sprite {
         // move entity based on velocity
         setX(getX() + xVelocity);
         setY(getY() + yVelocity);
+        
+        
+        // ADD CODE TO WRAPAROUND HERE!
+        
+        // horizontal
+        if (getX() >= 0) {
+            setX(getX() % DeathRecursion.GAME_WIDTH);
+        } else {
+            while(getX() < 0) {
+                setX(getX() + DeathRecursion.GAME_WIDTH);
+            }
+        }
+        
+        // vertical
+        if (getY() >= 0) {
+            setY(getY() % DeathRecursion.GAME_HEIGHT);
+        } else {
+            while(getY() < 0) {
+                setY(getY() + DeathRecursion.GAME_HEIGHT);
+            }
+        }
+        
+        // END OF CODING AREA //
         
     }
     
